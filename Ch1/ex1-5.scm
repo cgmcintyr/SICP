@@ -19,7 +19,8 @@
 
 (define
   (good-enough? guess x)
-    (< (abs (- (square guess) x)) (* guess .001))
+  (< (abs (- (improve guess x) guess))
+     (* guess .0001))
 )
 
 (define
