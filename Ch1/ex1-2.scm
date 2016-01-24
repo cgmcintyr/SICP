@@ -6,16 +6,8 @@
 ;;;
 
 (define
-  (largest-two-squares-sum x y z)
-    (if (= x (larger x y))
-      (sum-of-squares x (larger y z))
-      (sum-of-squares y (larger x z))
-    )
-)
-
-(define
-  (larger x y)
-    (if (> x y) x y)
+  (square x)
+    (* x x)
 )
 
 (define
@@ -24,6 +16,14 @@
 )
 
 (define
-  (square x)
-    (* x x)
+  (larger x y)
+    (if (> x y) x y)
+)
+
+(define
+  (largest-two-squares-sum x y z)
+    (if (= x (larger x y))
+      (sum-of-squares x (larger y z))
+      (sum-of-squares y (larger x z))
+    )
 )

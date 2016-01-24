@@ -5,16 +5,16 @@
 ;;;
 
 (define
-  (sqrt x)
-  (sqrt-iter 1 x)
+  (square x) (* x x)
 )
 
 (define
-  (sqrt-iter guess x)
-  (if (good-enough? guess x)
-    guess
-    (sqrt-iter (improve guess x)
-               x))
+  (average x y) (/ (+ x y) 2)
+)
+
+(define
+  (improve guess x)
+  (average guess (/ x guess))
 )
 
 (define
@@ -24,16 +24,13 @@
 )
 
 (define
-  (improve guess x)
-  (average guess (/ x guess))
+  (sqrt-iter guess x)
+  (if (good-enough? guess x)
+    guess
+    (sqrt-iter (improve guess x) x))
 )
 
 (define
-  (average x y)
-  (/ (+ x y) 2)
-)
-
-(define
-  (square x)
-    (* x x)
+  (sqrt x)
+  (sqrt-iter 1 x)
 )

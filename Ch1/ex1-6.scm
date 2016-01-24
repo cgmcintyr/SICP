@@ -1,12 +1,28 @@
 ;;; SICP Exercise 1.6 Solution
 ;;; Written by Christopher McIntyre (chrsintyre)
 ;;;
-;;; Implement a cube-root procedure using newton's method. 
+;;; Implement a cube-root procedure using newton's method.
 ;;;
 
 (define
-  (cubert x)
-  (cubert-iter 1 2 x)
+  (square x) (* x x)
+)
+
+(define
+  (cube x) (* x x x)
+)
+
+(define
+  (improve guess x)
+  (/ (+ (/ x (square guess))
+        (* 2 guess))
+     3)
+)
+
+(define
+  (good-enough? guess prev-guess)
+  (< (abs (- guess prev-guess))
+     (abs (* guess .001)))
 )
 
 (define
@@ -19,24 +35,6 @@
 )
 
 (define
-  (good-enough? guess prev-guess)
-  (< (abs (- guess prev-guess))
-     (abs (* guess .001)))
-)
-
-(define
-  (improve guess x)
-  (/ (+ (/ x (square guess))
-        (* 2 guess))
-     3)
-)
-
-(define
-  (square x)
-  (* x x)
-)
-
-(define
-  (cube x)
-  (* x x x)
+  (cubert x)
+  (cubert-iter 1 2 x)
 )
